@@ -2,7 +2,16 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    colors: {
+      "clr-white": "white",
+      "clr-black": "black",
+
+      "clr-primary": "#FF5151",
+
+      "clr-neutral-900": "hsl(0 0% 98%)",
+      "clr-neutral-800": "hsl(0 0% 85%)",
+      "clr-neutral-700": "hsl(0 0% 71%)",
+    },
   },
   plugins: [],
 }
