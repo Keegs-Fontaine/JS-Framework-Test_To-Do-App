@@ -1,15 +1,15 @@
-import checkContainer from "../assets/Check.svg"
+// Components
+import TaskItem from "./TaskItem"
 
-export default function DateListSection({ taskList }) {
-  return (
-    <section>
-      <h2>Date</h2>
-      {taskList.map(task => (
-        <article>
-          <img src={checkContainer} alt="" />
-          <h3>TITLE</h3>
-        </article>
-      ))}
-    </section>
-  )
+export default function DateListSection({ taskDateList }) {
+     const date = Object.keys(taskDateList)[0]
+
+     return (
+          <section>
+               <h2>{date}</h2>
+               {taskDateList[date].map(task => (
+                    <TaskItem taskTitle={task} />
+               ))}
+          </section>
+     )
 }
