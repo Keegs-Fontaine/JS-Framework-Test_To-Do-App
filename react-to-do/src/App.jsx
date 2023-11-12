@@ -1,31 +1,35 @@
 // Hooks
-import { useState } from "react"
+import { useContext } from "react"
+import useCustomIdValue from "./hooks/useCustomIdValue"
 
 // Components
 import DateListSection from "./components/DateListSection"
 
-export default function App() {
-     const [currentTaskList, setCurrentTaskList] = useState([
-          {
-               "10-29-23": [
-                    "Study for test",
-                    "Work on designs",
-                    "Scale react project",
-               ],
-          },
-          { "10-30-23": ["Finish wordlist"] },
-     ])
+// Context
+import { GlobalListData } from "./context/GlobalListDataProvider"
 
-     return (
-          <main>
-               <header>
-                    <h1>My Tasks</h1>
-               </header>
-               <section>
-                    {currentTaskList.map(taskDateList => (
-                         <DateListSection taskDateList={taskDateList} />
-                    ))}
-               </section>
-          </main>
-     )
+// Assets
+import plusBtn from "./assets/AddItemBtnSVG.svg"
+import AddItemModal from "./components/AddItemModal"
+
+export default function App() {
+  const { currentTaskList } = useContext(GlobalListData)
+  const idArr = useCustomIdValue(currentTaskList)
+
+  return (
+    <>
+      <header>
+        <h1>My Tasks</h1>
+      </header>
+      <main>
+        {currentTaskList.map((taskDateList, i) => (
+          <DateListSection taskDateList={taskDateList} key={idArr[i]} />
+        ))}
+      </main>
+      <button className="bg-clr-primary">
+        <img src={plusBtn} alt="Add" />
+      </button>
+      <AddItemModal />
+    </>
+  )
 }
