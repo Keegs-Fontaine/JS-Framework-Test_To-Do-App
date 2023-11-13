@@ -9,8 +9,8 @@ export default function DateListSection({ taskDateList }) {
   const idArr = useCustomIdValue(taskDateList[date])
 
   return (
-    <section>
-      <h2>{date}</h2>
+    <section className="my-[4rem] grid gap-5">
+      <h2 className="w-36 justify-self-center text-center border-b-2 border-clr-primary">{date}</h2>
       {taskDateList[date].map((task, i) => (
         <TaskItem taskTitle={task} key={idArr[i]} />
       ))}

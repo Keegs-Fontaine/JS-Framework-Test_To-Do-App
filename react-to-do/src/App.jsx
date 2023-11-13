@@ -9,7 +9,6 @@ import DateListSection from "./components/DateListSection"
 import { GlobalListData } from "./context/GlobalListDataProvider"
 
 // Assets
-import plusBtn from "./assets/AddItemBtnSVG.svg"
 import AddItemModal from "./components/AddItemModal"
 
 export default function App() {
@@ -18,17 +17,15 @@ export default function App() {
 
   return (
     <>
-      <header>
-        <h1>My Tasks</h1>
+      <header className="mt-8 flex justify-center text-3xl">
+        <h1 className="w-56 text-center border-b-2 border-clr-primary">My Tasks</h1>
       </header>
       <main>
         {currentTaskList.map((taskDateList, i) => (
           <DateListSection taskDateList={taskDateList} key={idArr[i]} />
         ))}
       </main>
-      <button className="bg-clr-primary">
-        <img src={plusBtn} alt="Add" />
-      </button>
+
       <AddItemModal />
     </>
   )
